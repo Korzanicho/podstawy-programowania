@@ -7,5 +7,19 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Adrian Korzan 6900",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "ansi-colors": "^4.1.1",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-csso": "^3.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "node-notifier": "^6.0.0"
+  },
+  "browserslist": [
+    "last 1 version",
+    "> 1%"
+  ]
 }
