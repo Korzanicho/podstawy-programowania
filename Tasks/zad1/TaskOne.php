@@ -50,7 +50,7 @@
 					<h2>Rozwiązanie:</h2>
 					<span>Równanie ma dwa pierwiastki:</span>
 					<ul>
-						<li>Delta = {$this->calculateDelta($params)}</li>
+						<li>&Delta; = {$this->calculateDelta($params)}</li>
 						<li>x1 = $x1</li>
 						<li>x2 = $x2</li>
 					</ul>
@@ -62,12 +62,12 @@
 				<h2>Rozwiązanie:</h2>
 				<span>Równanie ma jeden pierwiastek:</span>
 				<ul>
-					<li>Delta = {$this->calculateDelta($params)}</li>
+					<li>&Delta; = {$this->calculateDelta($params)}</li>
 					<li>x = $x</li>
 				</ul>
 			";
 			} else {
-				$message = "Delta = {$this->calculateDelta($params)}
+				$message = "&Delta; = {$this->calculateDelta($params)}
 					Równanie nie ma pierwiastków rzeczywistych";
 			}
 			$this->showMessage($message);
@@ -107,7 +107,7 @@
 				return false;
 			}
 			if((int)$_POST["parametrA"] === 0) {
-				$this->showMessage('Miałem rozwiązać równanie kwadratowe. Proszę, podstaw inną liczbę przy x2');
+				$this->showMessage('Miałem rozwiązać równanie kwadratowe. Proszę, podstaw inną liczbę przy x<sup>2</sup>');
 				return false;
 			}
 			return true;

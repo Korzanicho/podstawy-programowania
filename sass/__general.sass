@@ -1,2 +1,37 @@
+*
+	box-sizing: border-box
 body
-	background: orange
+	width: 1048px
+	margin: 0 auto
+	background: url('./assets/double-bubble-outline.png')
+	font-family: 'Lato', sans-serif
+	a
+		color: black
+		cursor: pointer
+		text-decoration: none
+		&:link, &:active 
+			color: black
+	input
+		padding: 3px 20px
+	.button
+		background-color: #7bd17f
+		border: 0px solid transparent
+		padding: 10px 20px
+		color: white
+		&:hover
+			cursor: pointer
+			box-shadow: 0 0 3px gray
+		&:active, &:focus
+			border: 0px solid transparent
+			box-shadow: inset 0 0 3px gray
+			outline: none
+	.box
+		background: white
+		padding: 10px 20px
+		border-radius: 5px
+		box-shadow: 0 0 4px gray
+		margin-top: 10px
+	.Task
+		&__description
+			font-weight: 700
+			margin-bottom: 20px
