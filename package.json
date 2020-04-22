@@ -1,0 +1,11 @@
+{
+  "name": "projekt-podstawy-programowania",
+  "version": "1.0.0",
+  "description": "Zadania na zaliczenie przedmiotu Podstawy Programowania",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adrian Korzan 6900",
+  "license": "ISC"
+}
