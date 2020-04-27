@@ -8,33 +8,21 @@
 			<h2>Zadanie 3</h2>
 		</div>
 		<div class="Task__description">
-			Ciąg arytmetyczny - to ciąg liczbowy, w którym każdy wyraz można otrzymywać
+			Ciąg arytmetyczny - to ciąg liczbowy, w którym każdy wyraz można otrzymać dodając wyraz bezpośrednio go poprzedzający oraz ustaloną liczbę r, zwaną różnicą ciągu. Np. ciąg: (1, 3, 5, 7, 9, ...) jest ciągiem arytmetycznym (jego różnicą r jest 2). Napisać program wczytujący z formularza r (różnicę) oraz liczbę n (ilość wyrazów ciągu). Następnie wyliczyć i wyświetlić pierwszych n wyrazów ciągu oraz podać ich sumę
 		</div>
-		<form action="" method="POST" class="TaskTwo__form">
-			<div class="form-item">			
-				(
-					<input type="number" name="x1" id="x1" placeholder="x1">,&nbsp;
-					<input type="number" name="y1" id="y1" placeholder="y1">
-				)
+		<form action="" method="POST" class="TaskThree__form">
+			<div class="form-item">
+				<label for="difference">Różnica: </label>
+				<input type="number" name="difference" id="difference" placeholder="r">
+				<label for="wordsNumber">Ilość wyrazów ciągu</label>
+				<input type="number" name="wordsNumber" id="wordsNumber" placeholder="n">
 			</div>
-			<div class="form-item">			
-				(
-					<input type="number" name="x2" id="x2" placeholder="x2">,&nbsp;
-					<input type="number" name="y2" id="y2" placeholder="y2">
-				)
-			</div>
-			<div class="form-item">			
-				(
-					<input type="number" name="x3" id="x3" placeholder="x3">,&nbsp;
-					<input type="number" name="y3" id="y3" placeholder="y3">
-				)
-			</div>
-			<button class="button">Oblicz pole trójkąta</button>
+			<button class="button">Wylicz ciąg arytmetyczny</button>
 		</form>
-		<div class="TaskTwo__response">
+		<div class="TaskThree__response">
 			<?php 
-				$taskTwo = new TaskTwo;
-				$taskTwo->handle();
+				$taskThree = new TaskThree;
+				$taskThree->handle();
 			?>
 		</div>
 	</div>

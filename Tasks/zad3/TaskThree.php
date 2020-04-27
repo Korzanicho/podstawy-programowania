@@ -1,99 +1,73 @@
 <?php
+	require_once('../Task.php');
+	
 	/**
-	* TaskTwo
-	* Class to resolve task two.
+	* TaskThree
+	* Class to resolve task three.
 	* @author Adrian Korzan 6900 <adrian.korzan@gmail.com>
 	*/
-	final class TaskTwo {
-		private $vertex = [
-			'vertexOne' 	=> ['x1' => 0, 'y1' => 0],
-			'vertexTwo' 	=> ['x2' => 0, 'y2' => 0],
-			'vertexThree' => ['x3' => 0, 'y3' => 0]
+	final class TaskThree extends Task {
+
+		/**
+		 * Array
+		 */
+		private $params = [
+			'firstWord' 		=> 1,
+			'difference' 		=> 0,
+			'wordsNumber' 	=> 0
 		];
 
 		/**
-		* Handle resolve task two
+		* Handle resolve task three
 		*/
 		public function handle(): void 
 		{
 			if(empty($_POST))	return;
 			if(!$this->validateParams()) return;
 
-			$this->setVertex();
-			$this->calculateTriangleArea();
+			$this->setParams();
+			$this->calculateString();
 
 			return;
 		}
 
 		/**
-		* Show messages
-		* @param String
-		*/
-		private function showMessage(String $message = ''): void
-		{
-			echo $message;
-		}
-
-		/**
-		 * Calculate Triangle area function
+		 * Calculate string function
 		 */
-		private function calculateTriangleArea(): void
+		private function calculateString(): void
 		{
-			if($this->isItTriangle($this->vertex)) {
-				$absoluteValue = ((int)$this->vertex['vertexTwo']['x2']-(int)$this->vertex['vertexOne']['x1'])*((int)$this->vertex['vertexThree']['y3']-(int)$this->vertex['vertexOne']['y1'])-((int)$this->vertex['vertexTwo']['y2']-(int)$this->vertex['vertexOne']['y1'])*((int)$this->vertex['vertexThree']['x3']-(int)$this->vertex['vertexOne']['x1']);
+			$an = 0;
+			$string = [];
+			$stringSum = 0;
 
-				$absoluteValue < 0 ? $absoluteValue = -$absoluteValue : null;
-				$triangleArea = $absoluteValue/2;
-				$this->showMessage("Pole wynosi $triangleArea");
-			} else {
-				$this->showMessage('Podane współrzędne nie tworzą trójkąta');
-			}
-		}
+			$an = $this->params['firstWord'] + ($this->params['wordsNumber'] - 1) * $this->params['difference'];
 
-		/**
-		 * length of triangle sides
-		 * @param Array
-		 * @return Array
-		 */
-		private function triangleSidesLength(Array $vertex = []): Array
-		{
-			$sideAB = sqrt(pow(((int)$vertex['vertexTwo']['x2'] - (int)$vertex['vertexOne']['x1']), 2) + pow(((int)$vertex['vertexTwo']['y2']-(int)$vertex['vertexOne']['y1']), 2));
-			$sideBC = sqrt(pow(((int)$vertex['vertexThree']['x3'] - (int)$vertex['vertexTwo']['x2']), 2) + pow(((int)$vertex['vertexThree']['y3']-(int)$vertex['vertexTwo']['y2']), 2));
-			$sideAC = sqrt(pow(((int)$vertex['vertexThree']['x3'] - (int)$vertex['vertexOne']['x1']), 2) + pow(((int)$vertex['vertexThree']['y3']-(int)$vertex['vertexOne']['y1']), 2));
+			$stringSum = ($this->params['firstWord'] + $an) / 2 * $this->params['wordsNumber'];
 
-			return [$sideAB, $sideBC, $sideAC];
-		}
+			$lastWord = $this->params['firstWord'];
 
-		/**
-		 * Check is triangle possible
-		 * @return Boolean
-		 */
-		private function isItTriangle(): bool
-		{
-			$triangleSides = $this->triangleSidesLength($this->vertex);
-			$longestSide = max($triangleSides);
-			$remainingSidesLength = 0;
-
-			foreach ($triangleSides as $side) {
-				$side !== $longestSide ? $remainingSidesLength += $side : null;
-			}
-
-			if($remainingSidesLength <= $longestSide) return false;
 			
-			return true;
+			$this->showMessage("
+			<h2>Odpowiedź:</h2>
+			<span>Dla n = {$this->params['wordsNumber']} oraz r = {$this->params['difference']}</span><br>
+			<span>Suma wynosi: S<sub>{$this->params['difference']}</sub> = $an.<br><br>
+			<span>Ciąg: </span><br>
+			");
+			
+			for($i = 0; $i<=$this->params['wordsNumber'] - 1; $i++) {
+				$string = $this->params['firstWord'] + ($i+1 - 1) * $this->params['difference'];
+				$an = $i+1;
+				echo "a<sub>{$an}</sub> = $string<br>"; 
+			}
 		}
 		
 		/**
-		 * Set vertex
+		 * Set params
 		 */
-		private function setVertex(): void
+		private function setParams(): void
 		{
-			$this->vertex['vertexOne']['x1'] = (int)$_POST['x1'];
-			$this->vertex['vertexOne']['y1'] = (int)$_POST['y1'];
-			$this->vertex['vertexTwo']['x2'] = (int)$_POST['x2'];
-			$this->vertex['vertexTwo']['y2'] = (int)$_POST['y2'];
-			$this->vertex['vertexThree']['x3'] = (int)$_POST['x3'];
-			$this->vertex['vertexThree']['y3'] = (int)$_POST['y3'];
+			$this->params['difference'] = (int)$_POST['difference'];
+			$this->params['wordsNumber'] = (int)$_POST['wordsNumber'];
 		}
 		
 		/**
@@ -101,12 +75,12 @@
 		 */
 		private function validateParams(): bool
 		{
-			if($_POST["x1"] === "" || $_POST["y1"] === "" || $_POST["x2"] === "" || $_POST["y2"] === "" || $_POST["x3"] === "" || $_POST["y3"] === "" ) {
-				$this->showMessage('Wartość parametru nie może być pusta. Czy chodziło Ci o 0?');
+			if($_POST["difference"] === "" || $_POST["wordsNumber"] === "") {
+				$this->showMessage('<span class="error">Wartość parametru nie może być pusta</span>');
 				return false;
 			}
-			if(!is_int((int)$_POST["x1"]) || !is_int((int)$_POST["y1"]) || !is_int((int)$_POST["x2"]) || !is_int((int)$_POST["y2"]) || !is_int((int)$_POST["x3"]) || !is_int((int)$_POST["y3"])) {
-				$this->showMessage('Parametry muszą być liczbami');
+			if(!is_int((int)$_POST["difference"]) || !is_int((int)$_POST["wordsNumber"])) {
+				$this->showMessage('<span class="error">Parametry muszą być liczbami całkowitymi</span>');
 				return false;
 			}
 			return true;

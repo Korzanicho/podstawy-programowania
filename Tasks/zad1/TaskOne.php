@@ -1,10 +1,12 @@
 <?php
+	require_once('../Task.php');
+	
 	/**
 	* TaskOne
 	* Class to resolve task one.
 	* @author Adrian Korzan 6900
 	*/
-	final class TaskOne {
+	final class TaskOne extends Task {
 		private $params = [
 			'parametrA' => 0,
 			'parametrB' => 0,
@@ -25,15 +27,6 @@
 				$this->params
 			);
 			return;
-		}
-
-		/**
-		* Show messages
-		* @param String
-		*/
-		private function showMessage(String $message = ''): void
-		{
-			echo $message;
 		}
 
 		/**

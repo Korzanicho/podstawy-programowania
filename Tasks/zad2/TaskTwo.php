@@ -1,10 +1,12 @@
 <?php
+	require_once('../Task.php');
+
 	/**
 	* TaskTwo
 	* Class to resolve task two.
 	* @author Adrian Korzan 6900 <adrian.korzan@gmail.com>
 	*/
-	final class TaskTwo {
+	final class TaskTwo extends Task {
 		private $vertex = [
 			'vertexOne' 	=> ['x1' => 0, 'y1' => 0],
 			'vertexTwo' 	=> ['x2' => 0, 'y2' => 0],
@@ -26,21 +28,12 @@
 		}
 
 		/**
-		* Show messages
-		* @param String
-		*/
-		private function showMessage(String $message = ''): void
-		{
-			echo $message;
-		}
-
-		/**
 		 * Calculate Triangle area function
 		 */
 		private function calculateTriangleArea(): void
 		{
 			if($this->isItTriangle($this->vertex)) {
-				$absoluteValue = ((int)$this->vertex['vertexTwo']['x2']-(int)$this->vertex['vertexOne']['x1'])*((int)$this->vertex['vertexThree']['y3']-(int)$this->vertex['vertexOne']['y1'])-((int)$this->vertex['vertexTwo']['y2']-(int)$this->vertex['vertexOne']['y1'])*((int)$this->vertex['vertexThree']['x3']-(int)$this->vertex['vertexOne']['x1']);
+				$absoluteValue = ($this->vertex['vertexTwo']['x2']-$this->vertex['vertexOne']['x1'])*($this->vertex['vertexThree']['y3']-$this->vertex['vertexOne']['y1'])-($this->vertex['vertexTwo']['y2']-$this->vertex['vertexOne']['y1'])*($this->vertex['vertexThree']['x3']-$this->vertex['vertexOne']['x1']);
 
 				$absoluteValue < 0 ? $absoluteValue = -$absoluteValue : null;
 				$triangleArea = $absoluteValue/2;
@@ -57,9 +50,9 @@
 		 */
 		private function triangleSidesLength(Array $vertex = []): Array
 		{
-			$sideAB = sqrt(pow(((int)$vertex['vertexTwo']['x2'] - (int)$vertex['vertexOne']['x1']), 2) + pow(((int)$vertex['vertexTwo']['y2']-(int)$vertex['vertexOne']['y1']), 2));
-			$sideBC = sqrt(pow(((int)$vertex['vertexThree']['x3'] - (int)$vertex['vertexTwo']['x2']), 2) + pow(((int)$vertex['vertexThree']['y3']-(int)$vertex['vertexTwo']['y2']), 2));
-			$sideAC = sqrt(pow(((int)$vertex['vertexThree']['x3'] - (int)$vertex['vertexOne']['x1']), 2) + pow(((int)$vertex['vertexThree']['y3']-(int)$vertex['vertexOne']['y1']), 2));
+			$sideAB = sqrt(pow(($vertex['vertexTwo']['x2'] - $vertex['vertexOne']['x1']), 2) + pow(($vertex['vertexTwo']['y2']-$vertex['vertexOne']['y1']), 2));
+			$sideBC = sqrt(pow(($vertex['vertexThree']['x3'] - $vertex['vertexTwo']['x2']), 2) + pow(($vertex['vertexThree']['y3']-$vertex['vertexTwo']['y2']), 2));
+			$sideAC = sqrt(pow(($vertex['vertexThree']['x3'] - $vertex['vertexOne']['x1']), 2) + pow(($vertex['vertexThree']['y3']-$vertex['vertexOne']['y1']), 2));
 
 			return [$sideAB, $sideBC, $sideAC];
 		}
@@ -88,12 +81,12 @@
 		 */
 		private function setVertex(): void
 		{
-			$this->vertex['vertexOne']['x1'] = (int)$_POST['x1'];
-			$this->vertex['vertexOne']['y1'] = (int)$_POST['y1'];
-			$this->vertex['vertexTwo']['x2'] = (int)$_POST['x2'];
-			$this->vertex['vertexTwo']['y2'] = (int)$_POST['y2'];
-			$this->vertex['vertexThree']['x3'] = (int)$_POST['x3'];
-			$this->vertex['vertexThree']['y3'] = (int)$_POST['y3'];
+			$this->vertex['vertexOne']['x1'] = $_POST['x1'];
+			$this->vertex['vertexOne']['y1'] = $_POST['y1'];
+			$this->vertex['vertexTwo']['x2'] = $_POST['x2'];
+			$this->vertex['vertexTwo']['y2'] = $_POST['y2'];
+			$this->vertex['vertexThree']['x3'] = $_POST['x3'];
+			$this->vertex['vertexThree']['y3'] = $_POST['y3'];
 		}
 		
 		/**
@@ -102,11 +95,11 @@
 		private function validateParams(): bool
 		{
 			if($_POST["x1"] === "" || $_POST["y1"] === "" || $_POST["x2"] === "" || $_POST["y2"] === "" || $_POST["x3"] === "" || $_POST["y3"] === "" ) {
-				$this->showMessage('Wartość parametru nie może być pusta. Czy chodziło Ci o 0?');
+				$this->showMessage('<span class="error">Wartość parametru nie może być pusta. Czy chodziło Ci o 0?</span>');
 				return false;
 			}
 			if(!is_int((int)$_POST["x1"]) || !is_int((int)$_POST["y1"]) || !is_int((int)$_POST["x2"]) || !is_int((int)$_POST["y2"]) || !is_int((int)$_POST["x3"]) || !is_int((int)$_POST["y3"])) {
-				$this->showMessage('Parametry muszą być liczbami');
+				$this->showMessage('<span class="error">Parametry muszą być liczbami</span>');
 				return false;
 			}
 			return true;

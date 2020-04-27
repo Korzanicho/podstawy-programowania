@@ -13,20 +13,20 @@
 		<form action="" method="POST" class="TaskTwo__form">
 			<div class="form-item">			
 				(
-					<input type="number" name="x1" id="x1" placeholder="x1">,&nbsp;
-					<input type="number" name="y1" id="y1" placeholder="y1">
+					<input type="number" step="any" name="x1" id="x1" placeholder="x1">,&nbsp;
+					<input type="number" step="any" name="y1" id="y1" placeholder="y1">
 				)
 			</div>
 			<div class="form-item">			
 				(
-					<input type="number" name="x2" id="x2" placeholder="x2">,&nbsp;
-					<input type="number" name="y2" id="y2" placeholder="y2">
+					<input type="number" step="any" name="x2" id="x2" placeholder="x2">,&nbsp;
+					<input type="number" step="any" name="y2" id="y2" placeholder="y2">
 				)
 			</div>
 			<div class="form-item">			
 				(
-					<input type="number" name="x3" id="x3" placeholder="x3">,&nbsp;
-					<input type="number" name="y3" id="y3" placeholder="y3">
+					<input type="number" step="any" name="x3" id="x3" placeholder="x3">,&nbsp;
+					<input type="number" step="any" name="y3" id="y3" placeholder="y3">
 				)
 			</div>
 			<button class="button">Oblicz pole trójkąta</button>
