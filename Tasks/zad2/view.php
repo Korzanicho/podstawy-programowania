@@ -1,0 +1,42 @@
+<?php require_once('./TaskTwo.php'); ?>
+<!DOCTYPE html>
+<html lang="pl">
+<?php include_once('../../header.php') ?>
+<body>
+	<div class="content Task TaskTwo box">
+		<div class="Task__header">
+			<h2>Zadanie 2</h2>
+		</div>
+		<div class="Task__description">
+			Napisać program liczący pole trójkąta o zadanych wierzchołkach (x1, y1), (x2, y2), (x3, y3). Wczytać współrzędne wierzchołków za pomocą formularza. Sprawdzić czy jest to trójkąt. Jeśli tak, policzyć jego pole i wyświetlić. Jeśli nie, napisać: <q>podane współrzędne nie tworzą trójkąta</q> 
+		</div>
+		<form action="" method="POST" class="TaskTwo__form">
+			<div class="form-item">			
+				(
+					<input type="number" name="x1" id="x1" placeholder="x1">,&nbsp;
+					<input type="number" name="y1" id="y1" placeholder="y1">
+				)
+			</div>
+			<div class="form-item">			
+				(
+					<input type="number" name="x2" id="x2" placeholder="x2">,&nbsp;
+					<input type="number" name="y2" id="y2" placeholder="y2">
+				)
+			</div>
+			<div class="form-item">			
+				(
+					<input type="number" name="x3" id="x3" placeholder="x3">,&nbsp;
+					<input type="number" name="y3" id="y3" placeholder="y3">
+				)
+			</div>
+			<button class="button">Oblicz pole trójkąta</button>
+		</form>
+		<div class="TaskTwo__response">
+			<?php 
+				$taskTwo = new TaskTwo;
+				$taskTwo->handle();
+			?>
+		</div>
+	</div>
+</body>
+</html>

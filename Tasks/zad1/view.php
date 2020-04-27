@@ -4,6 +4,9 @@
 <?php include_once('../../header.php') ?>
 <body>
 	<div class="content Task TaskOne box">
+		<div class="Task__header">
+			<h2>Zadanie 1</h2>
+		</div>
 		<div class="Task__description">
 			Napisać program rozwiązujący równanie kwadratowe w postaci ax<sup>2</sup> + bx + c = 0. Wczytać za pomocą formularza parametry: a, b, c. Sprawdzić istnienie pierwiastków, wyliczyć je i wyświetlić.
 		</div>
