@@ -53,14 +53,18 @@ const sassCompile = function(){
 	.pipe(csso())
 	.pipe(sourcemaps.write("."))
 	.pipe(gulp.dest("."))
+	.pipe(browserSync.stream());
 }
 
 const watch = function(){
-	gulp.watch("./sass/**/*.sass", gulp.series(sassCompile));
-	// gulp.watch("./**/*.php", browserSyncReload);
+	gulp.watch("./sass/**/*.sass", gulp.series(sassCompile, browserSyncReload));
 }
 
-exports.default = gulp.series(sassCompile, watch);
-exports.connectSync = connectSync;
+const watchPhp = function(){
+	gulp.watch("./**/*.php", browserSyncReload);
+}
+
+exports.default = gulp.series( sassCompile, watch, watchPhp );
+exports.serve = gulp.series( connectSync, sassCompile, watch, watchPhp );
 exports.sassCompile = sassCompile;
 exports.watch = watch;

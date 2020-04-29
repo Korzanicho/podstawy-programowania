@@ -13,9 +13,9 @@
 		<form action="" method="POST" class="TaskThree__form">
 			<div class="form-item">
 				<label for="difference">Różnica: </label>
-				<input type="number" name="difference" id="difference" placeholder="r">
-				<label for="wordsNumber">Ilość wyrazów ciągu</label>
-				<input type="number" name="wordsNumber" id="wordsNumber" placeholder="n">
+				<input type="number" name="difference" id="difference" placeholder="r" value="<?php echo $_POST ? $_POST['difference'] : null ?>">
+				<label for="wordsNumber">Ilość wyrazów ciągu: </label>
+				<input type="number" name="wordsNumber" id="wordsNumber" placeholder="n" min="0" value="<?php echo $_POST ? $_POST['wordsNumber'] : null ?>">
 			</div>
 			<button class="button">Wylicz ciąg arytmetyczny</button>
 		</form>

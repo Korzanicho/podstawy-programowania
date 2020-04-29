@@ -13,20 +13,20 @@
 		<form action="" method="POST" class="TaskTwo__form">
 			<div class="form-item">			
 				(
-					<input type="number" step="any" name="x1" id="x1" placeholder="x1">,&nbsp;
-					<input type="number" step="any" name="y1" id="y1" placeholder="y1">
+					<input type="number" step="any" name="x1" id="x1" placeholder="x1" value="<?php echo $_POST ? $_POST['x1'] : null ?>">,&nbsp;
+					<input type="number" step="any" name="y1" id="y1" placeholder="y1" value="<?php echo $_POST ? $_POST['y1'] : null ?>">
 				)
 			</div>
 			<div class="form-item">			
 				(
-					<input type="number" step="any" name="x2" id="x2" placeholder="x2">,&nbsp;
-					<input type="number" step="any" name="y2" id="y2" placeholder="y2">
+					<input type="number" step="any" name="x2" id="x2" placeholder="x2" value="<?php echo $_POST ? $_POST['x2'] : null ?>">,&nbsp;
+					<input type="number" step="any" name="y2" id="y2" placeholder="y2" value="<?php echo $_POST ? $_POST['y2'] : null ?>">
 				)
 			</div>
 			<div class="form-item">			
 				(
-					<input type="number" step="any" name="x3" id="x3" placeholder="x3">,&nbsp;
-					<input type="number" step="any" name="y3" id="y3" placeholder="y3">
+					<input type="number" step="any" name="x3" id="x3" placeholder="x3" value="<?php echo $_POST ? $_POST['x3'] : null ?>">,&nbsp;
+					<input type="number" step="any" name="y3" id="y3" placeholder="y3" value="<?php echo $_POST ? $_POST['y3'] : null ?>">
 				)
 			</div>
 			<button class="button">Oblicz pole trójkąta</button>

@@ -2,18 +2,18 @@
 	require_once('../Task.php');
 	
 	/**
-	* TaskThree
+	* TaskFour
 	* Class to resolve task three.
 	* @author Adrian Korzan 6900 <adrian.korzan@gmail.com>
 	*/
-	final class TaskThree extends Task {
+	final class TaskFour extends Task {
 
 		/**
-		 * Array
-		 */
+		* Array
+		*/
 		private $params = [
 			'firstWord' 		=> 1,
-			'difference' 		=> 0,
+			'quotient' 			=> 0,
 			'wordsNumber' 	=> 0
 		];
 
@@ -36,25 +36,24 @@
 		 */
 		private function calculateString(): void
 		{
-			$an = 0;
 			$string = [];
 			$stringSum = 0;
 
-			$an = $this->params['firstWord'] + ($this->params['wordsNumber'] - 1) * $this->params['difference'];
-
-			$stringSum = ($this->params['firstWord'] + $an) / 2 * $this->params['wordsNumber'];
+			$this->params['quotient'] !== 1 ? 
+				$stringSum = $this->params['firstWord'] * ( (1 - pow($this->params['quotient'], $this->params['wordsNumber'])) / (1 - $this->params['quotient'])) : 
+				$stringSum = $this->params['firstWord'] * $this->params['wordsNumber'];
 			
 			$this->showMessage("
 			<h2>Odpowiedź:</h2>
-			<span>Dla n = {$this->params['wordsNumber']} oraz r = {$this->params['difference']}</span><br>
+			<span>Dla n = {$this->params['wordsNumber']} oraz q = {$this->params['quotient']}</span><br>
 			<span>Suma wynosi: S<sub>{$this->params['wordsNumber']}</sub> = $stringSum.<br><br>
 			<span>Ciąg: </span><br>
 			");
 			
 			for($i = 1; $i<=$this->params['wordsNumber']; $i++) {
-				$string = $this->params['firstWord'] + ($i - 1) * $this->params['difference'];
+				$an = $this->params['firstWord'] * pow($this->params['quotient'], $i-1);
 
-				echo "a<sub>{$i}</sub> = $string<br>"; 
+				echo "a<sub>{$i}</sub> = $an<br>"; 
 			}
 		}
 		
@@ -63,7 +62,7 @@
 		 */
 		private function setParams(): void
 		{
-			$this->params['difference'] = (int)$_POST['difference'];
+			$this->params['quotient'] = (int)$_POST['quotient'];
 			$this->params['wordsNumber'] = (int)$_POST['wordsNumber'];
 		}
 		
@@ -72,15 +71,19 @@
 		 */
 		private function validateParams(): bool
 		{
-			if($_POST["difference"] === "" || $_POST["wordsNumber"] === "") {
+			if($_POST["quotient"] === "" || $_POST["wordsNumber"] === "") {
 				$this->showMessage('<span class="error">Wartość parametru nie może być pusta</span>');
 				return false;
 			}
-			if(!is_int((int)$_POST["difference"]) || !is_int((int)$_POST["wordsNumber"])) {
+			if(!is_int((int)$_POST["quotient"]) || !is_int((int)$_POST["wordsNumber"])) {
 				$this->showMessage('<span class="error">Parametry muszą być liczbami całkowitymi</span>');
 				return false;
 			}
+			if((int)$_POST["quotient"] === 0 || (int)$_POST["wordsNumber"] < 3) {
+				$this->showMessage('<span class="error">Iloraz nie może być równy 0, ilość wyrazów musi być większa bądź równa 3</span>');
+				return false;
+			}
+
 			return true;
 		}
 	}
-
