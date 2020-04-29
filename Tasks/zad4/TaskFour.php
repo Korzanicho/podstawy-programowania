@@ -3,7 +3,7 @@
 	
 	/**
 	* TaskFour
-	* Class to resolve task three.
+	* Class to resolve task four.
 	* @author Adrian Korzan 6900 <adrian.korzan@gmail.com>
 	*/
 	final class TaskFour extends Task {
@@ -18,7 +18,7 @@
 		];
 
 		/**
-		* Handle resolve task three
+		* Handle resolve task four
 		*/
 		public function handle(): void 
 		{
