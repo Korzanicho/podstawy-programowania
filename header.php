@@ -13,5 +13,7 @@
 			<li><a href="<?=$_SERVER['HTTP_HOST']?>/Tasks/zad3/view.php">Zadanie 3</a></li>
 			<li><a href="<?=$_SERVER['HTTP_HOST']?>/Tasks/zad4/view.php">Zadanie 4</a></li>
 			<li><a href="<?=$_SERVER['HTTP_HOST']?>/Tasks/zad5/view.php">Zadanie 5</a></li>
+			<li><a href="<?=$_SERVER['HTTP_HOST']?>/Tasks/zad6/view.php">Zadanie 6</a></li>
+			<li><a href="<?=$_SERVER['HTTP_HOST']?>/Tasks/zad7/view.php">Zadanie 7</a></li>
 		</ul>
 	</nav>

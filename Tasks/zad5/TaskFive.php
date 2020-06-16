@@ -1,12 +1,10 @@
 <?php
-	require_once('../Task.php');
-	
 	/**
 	* TaskFive
 	* Class to resolve task five.
 	* @author Adrian Korzan 6900 <adrian.korzan@gmail.com>
 	*/
-	final class TaskFive extends Task {
+	final class TaskFive{
 		/**
 		* Generate form
 		* @return String
