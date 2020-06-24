@@ -22,10 +22,10 @@
 			<?php 
 				$taskSeven = new TaskSeven;
 
-				$data = ['Warszawa', 'Kraków', 'Gdynia', 'Gdańsk'];
-				$solution = [1, 1, 0, 0];
+				$data = ['Karp', 'Wieloryb', 'Rekin', 'Panda'];
+				$solution = [1, 0, 1, 0];
 
-				$taskSeven->displayCheckBox('zad7_wynik.php', 'OK', 'Stolicą Polski jest?', $data, $solution);
+				$taskSeven->displayCheckBox('zad7_wynik.php', 'OK', 'Które zwierze jest rybą?', $data, $solution);
 			?>
 		</div>
 	</div>

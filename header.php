@@ -4,6 +4,7 @@
 	<title>Adrian Korzan 6900</title>
 	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="<?=$_SERVER['HTTP_HOST']?>/style.min.css">
+	<link rel="stylesheet" href="<?=$_SERVER['HTTP_HOST']?>/projekt/style.min.css">
 </head>
 <body>
 	<nav class="header box">
